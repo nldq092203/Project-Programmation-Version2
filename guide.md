@@ -125,6 +125,45 @@ pk is event_id
         "total_time": "00:30:40",
         "total_score": 41
 
+#### Save List CheckPoints -
+POST - {{baseURL}}/api/save-list-checkpoint/
+-> body:  race_id + checkpoints 
+Ex:
+race_id: 1
+checkpoints: 
+[
+    {"number": 1, "longitude": 50.8503, "latitude": 4.3517, "score": 10},
+    {"number": 2, "longitude": 51.5074, "latitude": 0.1278, "score": 20},
+    {"number": 3, "longitude": 48.8566, "latitude": 2.3522, "score": 30}
+]
+
+-> response 
+{
+    "message": "Checkpoints saved successfully",
+    "checkpoints": [
+        {
+            "number": 1,
+            "longitude": 50.8503,
+            "latitude": 4.3517,
+            "score": 10,
+            "race_id": "1"
+        },
+        {
+            "number": 2,
+            "longitude": 51.5074,
+            "latitude": 0.1278,
+            "score": 20,
+            "race_id": "1"
+        },
+        {
+            "number": 3,
+            "longitude": 48.8566,
+            "latitude": 2.3522,
+            "score": 30,
+            "race_id": "1"
+        }
+    ]
+}
 
 ### App Logics for Runner
 #### Location

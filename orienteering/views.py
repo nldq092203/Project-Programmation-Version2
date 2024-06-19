@@ -18,6 +18,7 @@ import datetime
 from django.utils.duration import duration_string
 import logging
 from math import radians, cos, sin, asin, sqrt
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -341,6 +342,24 @@ class ScoreTotalView(APIView):
 
         return Response(response_data, status=status.HTTP_200_OK)
              
+
+class SaveListCheckPointView(APIView):
+    def get_permissions(self):
+        return [IsCoachOrAdminUser()]
+    
+    def post(self, request, *args, **kwargs):
+        checkpoints = json.loads(request.data.get('checkpoints'))
+        race_id = request.data.get('race_id')
+
+        checkpoints_serializer = []
+        for checkpoint in checkpoints:
+            checkpoint['race_id'] = race_id
+            serializer = CheckPointSerializer(data=checkpoint)
+            if not serializer.is_valid():
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            checkpoints_serializer.append(serializer)
+        return Response({'message': 'Checkpoints saved successfully', 'checkpoints': checkpoints}, status=status.HTTP_201_CREATED)
+
 
 
 
