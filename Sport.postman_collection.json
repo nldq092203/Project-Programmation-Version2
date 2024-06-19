@@ -1,0 +1,1383 @@
+{
+	"info": {
+		"_postman_id": "2f31eb5d-ae9a-45d6-8e64-74b4e9c59a55",
+		"name": "Sport",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33670928"
+	},
+	"item": [
+		{
+			"name": "Register Runner",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "harry",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "sport123@",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "Harry",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "POTTER",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "Runner",
+							"type": "text"
+						},
+						{
+							"key": "department",
+							"value": "STI",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "harry@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/auth/users/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Participant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "harry",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "sport123@",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/auth/token/login/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout Participant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenQuynh}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/auth/token/logout/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"logout",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenQuynh}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "current_password",
+							"value": "sport123@",
+							"type": "text"
+						},
+						{
+							"key": "new_password",
+							"value": "sport123@",
+							"type": "text"
+						},
+						{
+							"key": "logout_after_password_change",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/auth/users/set_password/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"users",
+						"set_password",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Tokent {{accessTokenQuynh}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "nldq220903@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/auth/users/reset_password/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"users",
+						"reset_password",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Coach",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "sport123@",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "Coach",
+							"type": "text"
+						},
+						{
+							"key": "secret_code",
+							"value": "iamcoach",
+							"type": "text"
+						},
+						{
+							"key": "department",
+							"value": "enseignant",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "coach@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/auth/users/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Locations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenRoot}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/locations/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"locations",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Location",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "abcdfhjdsfs",
+							"type": "text"
+						},
+						{
+							"key": "longitude",
+							"value": "40.5",
+							"type": "text"
+						},
+						{
+							"key": "latitude",
+							"value": "80",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/locations/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"locations",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Location Detail",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenQuynh}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/locations/1/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"locations",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Location",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "longitude",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "latitude",
+							"value": "10",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/locations/3/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"locations",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Location",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/locations/3/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"locations",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get GroupRunners",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/group-runners-coach/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"group-runners-coach",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create GroupRunner",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "TD2",
+							"type": "text"
+						},
+						{
+							"key": "department",
+							"value": "MRI",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/group-runners-coach/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"group-runners-coach",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get GroupRunner Detail",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenQuynh}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/group-runners-coach/3/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"group-runners-coach",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update GroupRunner",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "TD3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/group-runners-coach/1/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"group-runners-coach",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Participants",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenRoot}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/participants/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"participants",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify Participant",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenQuynh}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "quynh@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/participants/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"participants",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Join Group",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenQuynh}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "runner_id",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "group_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/join-group/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"join-group",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Event for Coach",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/events-coach?is_finished=false&department=STI",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"events-coach"
+					],
+					"query": [
+						{
+							"key": "is_finished",
+							"value": "false"
+						},
+						{
+							"key": "department",
+							"value": "STI"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Event",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "EPS",
+							"type": "text"
+						},
+						{
+							"key": "start",
+							"value": "2024-06-18 14:00:00",
+							"type": "text"
+						},
+						{
+							"key": "end",
+							"value": "2024-06-19 18:00:00",
+							"type": "text"
+						},
+						{
+							"key": "location_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "coach_id",
+							"value": "8",
+							"type": "text"
+						},
+						{
+							"key": "group_runner_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "department",
+							"value": "STI",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/events-coach/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"events-coach",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Event Detail",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/events-coach/1/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"events-coach",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Event",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Seance 1",
+							"type": "text"
+						},
+						{
+							"key": "start",
+							"value": "2024-06-18 12:00:00",
+							"type": "text"
+						},
+						{
+							"key": "end",
+							"value": "2024-06-18 22:00:00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/events-coach/1/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"events-coach",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Publish Event",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "event_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "event_publish",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/event-publish/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"event-publish",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get my events",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenHarry}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/my-event-runner/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"my-event-runner",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all published events",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenQuynh}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/all-event-runner/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"all-event-runner",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get RaceType",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/race-types/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"race-types",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create RaceType",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Trail",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/race-types/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"race-types",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get published event detail",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenQuynh}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/all-event-runner/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"all-event-runner",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new race",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "event_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "time_limit",
+							"value": "00:30:00",
+							"type": "text"
+						},
+						{
+							"key": "race_type_name",
+							"value": "Trail",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/create-race/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"create-race",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Race Detail",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenQuynh}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "time_limit",
+							"value": "00:30:00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/race-runner/6/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"race-runner",
+						"6",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Start Race",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenQuynh}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "race_id",
+							"value": "6",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/start-race/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"start-race",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Record CheckPoint",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenQuynh}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "number",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "race_runner_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "longitude",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "latitude",
+							"value": "12",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/record-checkpoint/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"record-checkpoint",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get RaceRunner Status",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenQuynh}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/race-runner-status/2/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"race-runner-status",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Checkpoint",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenAdmin}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "race_id",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "number",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "score",
+							"value": "15",
+							"type": "text"
+						},
+						{
+							"key": "longitude",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "latitude",
+							"value": "90",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/checkpoints/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"checkpoints",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "End Race Runner",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{accessTokenQuynh}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "race_runner_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "total_time",
+							"value": "00:30:40",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/end-race-runner/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"end-race-runner",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Results of an Event",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/score-total/2",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"score-total",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "accessTokenRoot",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "accessTokenQuynh",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "accessTokenAdmin",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "accessTokenHarry",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

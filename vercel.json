@@ -1,0 +1,29 @@
+{
+    "builds": [
+      {
+        "src": "build_files.sh",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "staticfiles_build"
+        }
+      },
+      {
+        "src": "sport/wsgi.py",
+        "use": "@vercel/python",
+        "config": { 
+            "maxLambdaSize": "15mb",
+            "runtime": "Python3.10" 
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "sport/wsgi.py"
+      },
+      { 
+        "src": "/static/(.*)", 
+        "dest": "/staticfiles_build/$1" 
+      }
+    ]
+  }
