@@ -505,7 +505,7 @@ class RecordCheckPointView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
-    def haversine(lon1, lat1, lon2, lat2):
+    def haversine(self, lon1, lat1, lon2, lat2):
         """
         Calculate the great circle distance in kilometers between two points 
         on the earth (specified in decimal degrees)

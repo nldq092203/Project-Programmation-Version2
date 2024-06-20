@@ -65,7 +65,7 @@ class CheckPointRecord(models.Model):
     number = models.IntegerField()
     longitude = models.FloatField()
     latitude = models.FloatField()
-    is_correct = models.BooleanField(blank=True, null=True)
+    is_correct = models.BooleanField(default=False, blank=True, null=True)
     race_runner = models.ForeignKey('RaceRunner', on_delete=models.CASCADE, related_name='checkpoint_records')
                         
 class RaceRunner(models.Model):
