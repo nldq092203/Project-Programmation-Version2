@@ -510,7 +510,7 @@ class RecordCheckPointView(APIView):
             checkpoint_record = serializer.instance
             score = self.verify_checkpoint_record(checkpoint_record)
             checkpoint_record.race_runner.score += score
-            checkpoint_record.save()
+            checkpoint_record.race_runner.save()
             # checkpoint_record.delete()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
