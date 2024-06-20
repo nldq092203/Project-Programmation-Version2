@@ -478,6 +478,10 @@ class StartRaceView(APIView):
         group_event = race.event.group_runner.members.all()
         if request.user not in group_event:
             return Response({'message': 'You have not joined this event'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        if RaceRunner.objects.filter(race=race, runner=request.user).exists():
+            return Response({'message': 'You have already started this race'}, status=status.HTTP_400_BAD_REQUEST)
+
         race_runner = RaceRunner.objects.create(race=race, runner=request.user)
         serializer = RaceRunnerSerializer(race_runner, context=self.get_serializer_context())
 
@@ -495,6 +499,7 @@ class RaceRunnerDetailView(generics.RetrieveAPIView):
 class RecordCheckPointView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = CheckPointRecordSerializer(data=request.data)
+
         if serializer.is_valid():
             serializer.save()
             checkpoint_record = serializer.instance
@@ -518,7 +523,7 @@ class RecordCheckPointView(APIView):
         dlat = lat2 - lat1 
         a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
         c = 2 * asin(sqrt(a)) 
-        r = 6371 # Radius of earth in kilometers. Use 3956 for miles. Determines return value units.
+        r = 6371000 # Radius of earth in meters. Use 3956 for miles. Determines return value units.
         return c * r
 
     def verify_checkpoint_record(self, checkpoint_record):
