@@ -175,6 +175,7 @@ class EventSerializer(serializers.ModelSerializer):
 
 class CheckPointRecordSerializer(serializers.ModelSerializer):
     race_runner_id = serializers.IntegerField(write_only=True)
+    is_correct = serializers.BooleanField(default=False)
 
     class Meta:
         model = models.CheckPointRecord

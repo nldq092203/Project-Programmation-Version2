@@ -494,18 +494,23 @@ class RaceRunnerDetailView(generics.RetrieveAPIView):
     def get_permissions(self):
         return [IsOwnerRaceRunner()]
     
-        
-
 class RecordCheckPointView(APIView):
     def post(self, request, *args, **kwargs):
+        race_runner = RaceRunner.objects.get(id=request.data.get('race_runner_id'))
+        race = Race.objects.get(id=race_runner.race.id)
+        num_checkpoints = CheckPoint.objects.filter(race=race).count()
+        num_recorded_checkpoints = CheckPointRecord.objects.filter(race_runner=race_runner).count()
         serializer = CheckPointRecordSerializer(data=request.data)
+
+        if num_recorded_checkpoints >= num_checkpoints:
+            return Response({"detail": "Maximum number of checkpoints recorded."}, status=status.HTTP_400_BAD_REQUEST)
 
         if serializer.is_valid():
             serializer.save()
             checkpoint_record = serializer.instance
             score = self.verify_checkpoint_record(checkpoint_record)
             checkpoint_record.race_runner.score += score
-            checkpoint_record.delete()
+            # checkpoint_record.delete()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
