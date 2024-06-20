@@ -37,6 +37,7 @@ urlpatterns = [
     path('race-runner-status/<int:pk>/', views.RaceRunnerDetailView.as_view(), name='race_runner_status'),
     path('record-checkpoint/', views.RecordCheckPointView.as_view(), name='record_checkpoint'),
     path('checkpoints/', views.CheckPointListView.as_view(), name='checkpoints'),
+    path('checkpoints/<int:pk>/', views.CheckPointDetailView.as_view(), name='checkpoint-detail'),
     path('save-list-checkpoint/', views.SaveListCheckPointView.as_view(), name='save-checkpoint'),
 
     path('end-race-runner/', views.EndRaceRunnerView.as_view(), name='end-race-runner'),

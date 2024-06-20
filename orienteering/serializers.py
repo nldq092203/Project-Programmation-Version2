@@ -71,7 +71,7 @@ class RaceTypeSerializer(serializers.ModelSerializer):
 
 
 class CheckPointSerializer(serializers.ModelSerializer):
-    race_id = serializers.IntegerField(write_only=True)
+    race_id = serializers.IntegerField()
 
     class Meta:
         model = models.CheckPoint
