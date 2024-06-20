@@ -503,7 +503,7 @@ class RecordCheckPointView(APIView):
         serializer = CheckPointRecordSerializer(data=request.data)
 
         if num_recorded_checkpoints >= num_checkpoints:
-            return Response({"detail": "Maximum number of checkpoints recorded."}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": "Maximum number of checkpoints recorded."}, status=status.HTTP_400_BAD_REQUEST)
 
         if serializer.is_valid():
             serializer.save()
