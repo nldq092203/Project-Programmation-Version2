@@ -418,7 +418,8 @@ class JoinGroupView(generics.GenericAPIView):
         group = GroupRunner.objects.get(id=group_id)
 
         # Add the runner to the group
-        group.members.add(runner)
+        if not group.members.filter(id=runner.id).exists():
+            group.members.add(runner)
 
         # Save the group
         group.save()
