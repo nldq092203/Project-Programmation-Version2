@@ -637,7 +637,7 @@ class RecordCheckPointView(APIView):
 
 class EndRaceRunnerView(APIView):
     
-        NegativePointPerSecond = 0.1
+        NegativePointPerSecond = 0
     
         def get_permissions(self):
             return [IsOwnerRaceRunner()]
@@ -648,8 +648,8 @@ class EndRaceRunnerView(APIView):
                 race_runner = RaceRunner.objects.get(id=race_runner_id)
             except RaceRunner.DoesNotExist:
                 return Response({'message: Not found'}, status=status.HTTP_404_NOT_FOUND)
-            if race_runner.is_finished:
-                return Response({'message': 'You have terminated your race'}, status=status.HTTP_400_BAD_REQUEST)
+            # if race_runner.is_finished:
+            #     return Response({'message': 'You have terminated your race'}, status=status.HTTP_400_BAD_REQUEST)
             total_time = request.data.get('total_time')
             if total_time is not None:
                 # Convert the total_time string to a timedelta object
