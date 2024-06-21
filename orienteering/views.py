@@ -368,6 +368,8 @@ class ScoreTotalView(APIView):
             response_data.append({
                 'runner_id': runner.id,
                 'runner_username': runner.username,
+                'runner_first_name': runner.first_name,
+                'runner_last_name': runner.last_name,
                 'total_time': duration_string(total_time),  # Convert total time to datetime
                 'total_score': total_score
             })
