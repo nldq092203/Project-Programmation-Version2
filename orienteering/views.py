@@ -389,6 +389,7 @@ class SaveListCheckPointView(APIView):
             serializer = CheckPointSerializer(data=checkpoint)
             if not serializer.is_valid():
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            serializer.save()
             checkpoints_serializer.append(serializer)
         return Response({'message': 'Checkpoints saved successfully', 'checkpoints': checkpoints}, status=status.HTTP_201_CREATED)
 
