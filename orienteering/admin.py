@@ -2,7 +2,7 @@ from django.contrib import admin
 from . import models
 
 class ParticipantAdmin(admin.ModelAdmin):
-    list_display = ['username', 'first_name', 'last_name', 'department', 'email', 'role']
+    list_display = ['id', 'username', 'first_name', 'last_name', 'department', 'email', 'role']
     search_fields = ['username', 'first_name', 'last_name', 'department']
     list_filter = ['department']
     fieldsets = [
