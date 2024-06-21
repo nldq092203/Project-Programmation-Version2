@@ -312,7 +312,7 @@ class RaceCreateView(generics.CreateAPIView):
         if data['time_limit'].total_seconds() < 0:
             return Response({'message': 'Time limit must be positive'}, status=status.HTTP_400_BAD_REQUEST)
         
-        race_type_name = request.data.get('race_type_name', 'Memorize')
+        race_type_name = request.data.get('race_type_name', 'Normal')
         data['race_type'] = RaceType.objects.get(name=race_type_name).id
         serializer = RaceSerializer(data=data, context=self.get_serializer_context())
         if serializer.is_valid():
@@ -659,7 +659,7 @@ class RecordCheckPointView(APIView):
 
 class EndRaceRunnerView(APIView):
     
-        NegativePointPerSecond = 0
+        NegativePointPerSecond = 0.2
     
         def get_permissions(self):
             return [IsOwnerRaceRunner()]
