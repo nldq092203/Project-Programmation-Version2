@@ -82,7 +82,7 @@ CREATE_SESSION_ON_LOGIN
     response: data created
     publish = False by default
 
-- {{baseURL}}/api/events-coach/<int:pk>
+- {{baseURL}}/api/events-coach/<int:pk>/
     + GET-retrieve: Retrieve a specific event
     + PUT or PATCH: Update a specific event
     + DELETE: Delete a specific event
@@ -117,7 +117,7 @@ CREATE_SESSION_ON_LOGIN
 -> body: number + longitude + latitude + race_id + score
 
 #### Get all Score for Event
-- GET - {{baseUYL}} - score-total/<int:pk>/
+- GET - {{baseURL}}/score-total/<int:pk>/
 pk is event_id
 -> Response List contains 'runner_id'+'runner_username'+'total_time'+'total_score' 
         "runner_id": 6,
