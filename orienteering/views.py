@@ -464,6 +464,15 @@ class RaceDetailRunnerView(generics.RetrieveUpdateDestroyAPIView):
     
     def get_permissions(self):
         return [IsRunner()]
+    
+    def get(self, request, *args, **kwargs):
+        race = self.get_object()
+        serializer = self.get_serializer(race)
+        data = serializer.data
+        event_location = race.event.location if hasattr(race.event, 'location') else 'Location not available'
+        data['event_location'] = {'id': event_location.id, 'name': event_location.name, 'longitude': event_location.longitude, 'latitude': event_location.latitude}
+        return Response(data, status=status.HTTP_200_OK)        
+
 
 
 class StartRaceView(APIView):
