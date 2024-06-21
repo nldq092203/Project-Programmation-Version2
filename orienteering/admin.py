@@ -22,7 +22,7 @@ class GroupRunnerAdmin(admin.ModelAdmin):
     filter_horizontal = ['members']
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ['name', 'start', 'end', 'location', 'coach', 'group_runner', 'publish']
+    list_display = ['id', 'name', 'start', 'end', 'location', 'coach', 'group_runner', 'publish']
     search_fields = ['name', 'location', 'coach', 'group_runner']
     list_filter = ['publish']
     fieldsets = [
