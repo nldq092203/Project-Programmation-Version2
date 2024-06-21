@@ -380,19 +380,21 @@ class SaveListCheckPointView(APIView):
         return [IsCoachOrAdminUser()]
     
     def post(self, request, *args, **kwargs):
-        checkpoints = json.loads(request.data.get('checkpoints'))
+        checkpoints = request.data.get('checkpoints')
+        logger.debug(request.data)
         race_id = request.data.get('race_id')
 
         checkpoints_serializer = []
         for checkpoint in checkpoints:
             checkpoint['race_id'] = race_id
+            logger.debug(checkpoint)
             serializer = CheckPointSerializer(data=checkpoint)
             if not serializer.is_valid():
+                logger.error(serializer.errors)
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             serializer.save()
             checkpoints_serializer.append(serializer)
         return Response({'message': 'Checkpoints saved successfully', 'checkpoints': checkpoints}, status=status.HTTP_201_CREATED)
-
 
 
 
